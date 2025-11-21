@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proceder al Pago | AUTOFIX</title>
+  <link rel="stylesheet" href="CSS/index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <!-- Logo -->
+      <div class="header-logo">
+        <a href="index.html">
+          <img src="img/Autofix.png" alt="AUTOFIX Logo" />
+        </a>
+      </div>
+
+      <!-- Barra de Búsqueda -->
+      <div class="header-search">
+        <input type="text" placeholder="Buscar refacciones..." class="search-input" />
+        <button class="search-btn">BUSCAR</button>
+      </div>
+
+      <!-- Acciones de Usuario -->
+      <div class="header-actions">
+        <a href="productos.html" class="action-link">TODOS LOS PRODUCTOS</a>
+        <a href="cuenta.html" class="action-link">TU CUENTA</a>
+        <a href="login.html" class="action-link">INICIAR SESIÓN</a>
+        <a href="carrito.html" class="cart-icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sección Principal: Proceso de Pago -->
+  <section class="checkout-section">
+    <div class="checkout-container">
+      <h1 class="checkout-title">Proceder al Pago</h1>
+      
+      <div class="checkout-content">
+        <!-- Columna Izquierda: Formularios -->
+        <div class="checkout-forms">
+          <!-- Paso 1: Dirección de Envío -->
+          <div class="checkout-step" id="shippingStep">
+            <div class="step-header">
+              <div class="step-number">1</div>
+              <h2 class="step-title">Dirección de Envío</h2>
+            </div>
+            
+            <form class="checkout-form" id="shippingForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">Nombre *</label>
+                  <input type="text" id="firstName" name="firstName" required />
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Apellidos *</label>
+                  <input type="text" id="lastName" name="lastName" required />
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Correo Electrónico *</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Teléfono *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(55) 1234-5678" required />
+              </div>
+              
+              <div class="form-group">
+                <label for="address">Dirección *</label>
+                <input type="text" id="address" name="address" placeholder="Calle y número" required />
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">Ciudad *</label>
+                  <input type="text" id="city" name="city" required />
+                </div>
+                <div class="form-group">
+                  <label for="state">Estado *</label>
+                  <input type="text" id="state" name="state" required />
+                </div>
+                <div class="form-group">
+                  <label for="zipCode">Código Postal *</label>
+                  <input type="text" id="zipCode" name="zipCode" pattern="[0-9]{5}" required />
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="references">Referencias (opcional)</label>
+                <textarea id="references" name="references" rows="3" placeholder="Referencias para encontrar tu dirección..."></textarea>
+              </div>
+              
+              <button type="button" class="checkout-next-btn" id="continueToPayment">
+                Continuar al Pago
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Paso 2: Método de Pago -->
+          <div class="checkout-step" id="paymentStep" style="display: none;">
+            <div class="step-header">
+              <div class="step-number">2</div>
+              <h2 class="step-title">Método de Pago</h2>
+            </div>
+            
+            <form class="checkout-form" id="paymentForm">
+              <div class="payment-methods">
+                <div class="payment-method-card">
+                  <input type="radio" id="paymentCash" name="paymentMethod" value="cash" checked />
+                  <label for="paymentCash" class="payment-method-label">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Pago</span>
+                  </label>
+                </div>
+                
+                <div class="payment-method-card">
+                  <input type="radio" id="paymentOxxo" name="paymentMethod" value="oxxo" />
+                  <label for="paymentOxxo" class="payment-method-label">
+                    <i class="fas fa-store"></i>
+                    <span>Pago en OXXO</span>
+                  </label>
+                </div>
+                
+                <div class="payment-method-card">
+                  <input type="radio" id="paymentCard" name="paymentMethod" value="card" />
+                  <label for="paymentCard" class="payment-method-label">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Tarjeta de Crédito/Débito</span>
+                  </label>
+                </div>
+                
+                <div class="payment-method-card">
+                  <input type="radio" id="paymentTransfer" name="paymentMethod" value="transfer" />
+                  <label for="paymentTransfer" class="payment-method-label">
+                    <i class="fas fa-university"></i>
+                    <span>Transferencia Bancaria</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Información de Pago -->
+              <div class="payment-details" id="cashDetails">
+                <div class="cash-info">
+                  <p><i class="fas fa-info-circle"></i> El pago se realizará al momento de recibir tu pedido.</p>
+                  <p>Aceptamos efectivo y cambio exacto recomendado.</p>
+                </div>
+              </div>
+
+              <!-- Información de OXXO -->
+              <div class="payment-details" id="oxxoDetails" style="display: none;">
+                <div class="oxxo-info">
+                  <p><strong>Pago en tienda OXXO</strong></p>
+                  <p><i class="fas fa-store"></i> Recibirás un código de referencia que podrás usar para pagar en cualquier tienda OXXO.</p>
+                  <p>El código será enviado a tu correo electrónico una vez confirmes tu pedido.</p>
+                  <p class="oxxo-note">⏱️ Tienes 48 horas para realizar el pago. Después de ese tiempo, tu pedido será cancelado.</p>
+                </div>
+              </div>
+
+              <!-- Información de Tarjeta -->
+              <div class="payment-details" id="cardDetails" style="display: none;">
+                <div class="form-group">
+                  <label for="cardNumber">Número de Tarjeta *</label>
+                  <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" />
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="cardExpiry">Fecha de Expiración *</label>
+                    <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/AA" maxlength="5" />
+                  </div>
+                  <div class="form-group">
+                    <label for="cardCVC">CVC *</label>
+                    <input type="text" id="cardCVC" name="cardCVC" placeholder="123" maxlength="4" />
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="cardName">Nombre del Titular *</label>
+                  <input type="text" id="cardName" name="cardName" placeholder="Como aparece en la tarjeta" />
+                </div>
+              </div>
+
+              <!-- Información de Transferencia -->
+              <div class="payment-details" id="transferDetails" style="display: none;">
+                <div class="transfer-info">
+                  <p><strong>Realiza la transferencia a:</strong></p>
+                  <p>Banco: BBVA Bancomer</p>
+                  <p>Cuenta: 0123 4567 8901 2345</p>
+                  <p>CLABE: 012345678901234567</p>
+                  <p>Beneficiario: AUTOFIX S.A. de C.V.</p>
+                  <p class="transfer-note">Envíanos el comprobante al correo: autofix.mx01@gmail.com</p>
+                </div>
+              </div>
+              
+              <div class="checkout-actions">
+                <button type="button" class="checkout-back-btn" id="backToShipping">
+                  <i class="fas fa-arrow-left"></i>
+                  Volver
+                </button>
+                <button type="submit" class="checkout-confirm-btn" id="confirmOrder">
+                  <i class="fas fa-lock"></i>
+                  Confirmar Pedido
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Resumen del Pedido -->
+        <aside class="checkout-summary">
+          <div class="summary-card">
+            <h2 class="summary-title">Resumen del Pedido</h2>
+            
+            <div class="order-items" id="orderItems">
+              <!-- Los productos se cargarán dinámicamente -->
+            </div>
+            
+            <div class="summary-divider"></div>
+            
+            <div class="summary-details">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="summarySubtotal">$0.00 MXN</span>
+              </div>
+              <div class="summary-row">
+                <span>Envío</span>
+                <span id="summaryShipping">$0.00 MXN</span>
+              </div>
+              <div class="summary-row discount">
+                <span>Descuento</span>
+                <span id="summaryDiscount">-$0.00 MXN</span>
+              </div>
+              <div class="summary-divider"></div>
+              <div class="summary-row total">
+                <span>Total</span>
+                <span id="summaryTotal">$0.00 MXN</span>
+              </div>
+            </div>
+
+            <div class="security-info">
+              <i class="fas fa-lock"></i>
+              <span>Tu información está protegida con encriptación SSL</span>
+            </div>
+          </div>
+
+          <div class="checkout-promo">
+            <h3><i class="fas fa-shipping-fast"></i> Envío Rápido</h3>
+            <p>Recibe tu pedido en 2-3 días hábiles</p>
+            <p><i class="fas fa-shield-alt"></i> Garantía de 30 días en todos los productos</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <p>&copy; 2025 AUTOFIX. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/pago.js"></script>
+</body>
+</html>
+

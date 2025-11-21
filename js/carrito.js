@@ -147,8 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      alert('Redirigiendo al proceso de pago...');
-      // Aquí se puede redirigir a una página de checkout
+      // Redirigir a la página de pago
+      window.location.href = 'pago.html';
     });
   }
 
